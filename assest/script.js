@@ -55,9 +55,18 @@ let listaProductos = [
 ];
 //creo objeto del carrito
 const carrito = new Carrito();
+//carrito.agregarProducto(listaProductos[0], 2); // Agregar 2 unidades de "Leche"
+//carrito.agregarProducto(listaProductos[1], 3); // Agregar 3 unidades de "Pan de Molde"
+//console.log(carrito.calculatrTotal());
+//alert(carrito.mostrarBoleta())
+//mostrar productos para que el usuario pueda seleccionar
+function mostrarProductos(){
+    let mensaje = "seleciones una opción \n";
+    listaProductos.forEach((producto, numero) =>{
+        mensaje += `${numero + 1}-${producto.nombre} - $${producto.precio}\n`
+    })
+    mensaje += "0 - para salir\n"
+    return mensaje;
+}
+var selector =prompt(mostrarProductos());
 
-carrito.agregarProducto(listaProductos[0], 2); // Agregar 2 unidades de "Leche"
-carrito.agregarProducto(listaProductos[1], 3); // Agregar 3 unidades de "Pan de Molde"
-
-console.log(carrito.calculatrTotal());
-alert(carrito.mostrarBoleta())
