@@ -58,7 +58,7 @@ const carrito = new Carrito();
 //carrito.agregarProducto(listaProductos[0], 2); // Agregar 2 unidades de "Leche"
 //carrito.agregarProducto(listaProductos[1], 3); // Agregar 3 unidades de "Pan de Molde"
 //console.log(carrito.calculatrTotal());
-//alert(carrito.mostrarBoleta())
+//alert(carrito.mostrarBoleta());
 //mostrar productos para que el usuario pueda seleccionar
 function mostrarProductos(){
     let mensaje = "seleciones una opción \n";
@@ -68,5 +68,26 @@ function mostrarProductos(){
     mensaje += "0 - para salir\n"
     return mensaje;
 }
-var selector =prompt(mostrarProductos());
+//var selector =prompt(mostrarProductos());
+//bucle para seleccionar productos
+let salir = true; // sirve para indicar cuando se sale del bucle por opcion del usuario
+let seleccion;
 
+while (salir) {
+    seleccion = parseInt(prompt(mostrarProductos()))-1;
+    if (seleccion === -1) {
+        salir = false;
+    }
+    if (seleccion >= 0 && seleccion < listaProductos.length) {
+        const cantidad = parseInt(prompt(`Ingrese la cantidad de ${listaProductos[seleccion].nombre} que desea llevar`))
+        if (cantidad > 0) {
+            carrito.agregarProducto(listaProductos[seleccion], cantidad)
+        } else {
+            alert("cantidad no valida")
+        }
+    } else if(seleccion < -1){
+        alert("seleccion invalida intente nuevamente")
+    }
+    
+}
+alert(carrito.mostrarBoleta());
