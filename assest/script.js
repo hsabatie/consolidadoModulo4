@@ -78,7 +78,7 @@ while (salir) {
     /*if (seleccion === -1) {
         salir = false;
     }*/
-    salir = seleccion === -1 ? salir: false;
+    salir = seleccion === -1 ?false :salir;
     if (seleccion >= 0 && seleccion < listaProductos.length) {
         const cantidad = parseInt(prompt(`Ingrese la cantidad de ${listaProductos[seleccion].nombre} que desea llevar`))
         if (cantidad > 0) {
